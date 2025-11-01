@@ -2,6 +2,8 @@ package com.flm.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +24,7 @@ public class DepartmentController {
 	private final DepartmentService departmentService;
 	
 	@PostMapping("/saveDepartment")
-	public Department saveDepartment(@RequestBody DepartmentForm departmentForm){
+	public Department saveDepartment(@RequestBody DepartmentForm departmentForm) throws DepartmentNotFoundException{
 		Department dept = Department.builder()
 				.name(departmentForm.getName())
 				.location(departmentForm.getLocation())
@@ -31,13 +33,13 @@ public class DepartmentController {
 	}
 
 	@GetMapping("/getDepartment/{id}")
-	public Department getDepartment(@PathVariable Long id) throws DepartmentNotFoundException{
-		return departmentService.getDepartment(id);
+	public ResponseEntity<Department> getDepartment(@PathVariable Long id) throws DepartmentNotFoundException{
+		return new ResponseEntity<>(departmentService.getDepartment(id),HttpStatus.OK);
 	}
 	
 	
 	@GetMapping("/getDepartment")
-	public List<Department> getDepartmentParam() throws DepartmentNotFoundException{
+	public List<Department> getDepartments() throws DepartmentNotFoundException{
 		return departmentService.getDepartment();
 	}
 	

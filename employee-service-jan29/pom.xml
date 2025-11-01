@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.flm</groupId>
-	<artifactId>department-service-jan28</artifactId>
+	<artifactId>employee-service-jan28</artifactId>
 	<version>1.0</version>
 	<name>department-service-jan28</name>
 	<description>Department Service</description>
