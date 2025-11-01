@@ -19,7 +19,7 @@ public class DepartmentService {
 	private final DepartmentRepository departmentRepository;
 	
 	@Transactional
-	public Department saveDepartment(Department department){
+	public Department saveDepartment(Department department)throws DepartmentNotFoundException{
 		return departmentRepository.save(department);
 	}
 
