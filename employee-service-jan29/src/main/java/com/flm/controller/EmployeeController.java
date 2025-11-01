@@ -35,7 +35,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/getEmployee/{id}")
-	public Response getEmployee(@PathVariable Long id) throws EmployeeNotFoundException{
+	public Response getEmployee(@PathVariable("id") Long id) throws EmployeeNotFoundException{
 		return employeeService.getEmployee(id);
 	}
 	
@@ -54,12 +54,12 @@ public class EmployeeController {
 //		return employeeService.getEmployee(id);
 //	}
 	@DeleteMapping("/deleteEmployee/{id}")
-	public String DeleteEmployee(@PathVariable Long id) throws EmployeeNotFoundException{
+	public String DeleteEmployee(@PathVariable("id") Long id) throws EmployeeNotFoundException{
 		employeeService.deleteemployee(id);
 		return "delete success";
 	}
 	@PutMapping("/updateEmployee/{id}")
-	public Response updateEmployee(@PathVariable Long id,@RequestBody EmployeeForm employeeForm) throws EmployeeNotFoundException{
+	public Response updateEmployee(@PathVariable("id") Long id,@RequestBody EmployeeForm employeeForm) throws EmployeeNotFoundException{
 		return employeeService.updateEmployee(id,employeeForm);
 	}
 }

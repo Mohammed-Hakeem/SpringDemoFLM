@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.flm.dto.DepartmentForm;
@@ -19,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+
 public class DepartmentController {
 	
 	private final DepartmentService departmentService;
@@ -33,7 +35,7 @@ public class DepartmentController {
 	}
 
 	@GetMapping("/getDepartment/{id}")
-	public ResponseEntity<Department> getDepartment(@PathVariable Long id) throws DepartmentNotFoundException{
+	public ResponseEntity<Department> getDepartment(@PathVariable("id") Long id) throws DepartmentNotFoundException{
 		return new ResponseEntity<>(departmentService.getDepartment(id),HttpStatus.OK);
 	}
 	
