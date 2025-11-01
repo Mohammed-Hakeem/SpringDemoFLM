@@ -27,7 +27,7 @@ class DepartmentServiceTest {
 	DepartmentService service;
 
 	@Test
-	void saveDepartmentSuccessTest() {
+	void saveDepartmentSuccessTest() throws DepartmentNotFoundException {
 		Department dept = Department.builder().id(1L).name("IT").location("NY").build();
 		when(repo.save(dept)).thenReturn(dept);
 		Department result = service.saveDepartment(dept);
